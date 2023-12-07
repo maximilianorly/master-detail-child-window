@@ -1,0 +1,7 @@
+{
+  "name": "window-manipulation-app",
+  "packageManager": "yarn@3.6.4",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
