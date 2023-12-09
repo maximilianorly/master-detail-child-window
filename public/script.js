@@ -33,7 +33,7 @@ const dataManager = {
     sendData() {
         if (this._activeData) {
             try {
-                newWindow.postMessage(JSON.stringify(this._activeData), 'http://localhost:3000');
+                newWindow.postMessage(JSON.stringify(this._activeData), 'http://localhost:3001');
             } catch (err) {
                 console.error('Error sending message:', err);
             }
@@ -61,7 +61,7 @@ document.getElementById('openWindow').addEventListener('click', () => {
     if (newWindow && !newWindow.closed) {
         alert("The window is already open.");
     } else {
-        newWindow = window.open('http://localhost:3000/child-window', 'newWindow', 'width=400,height=300');
+        newWindow = window.open('http://localhost:3001/child-window', 'newWindow', 'width=400,height=300');
         if (newWindow) {
             // pass data using postMessage
             newWindow.onload = () => {

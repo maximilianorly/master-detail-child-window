@@ -1,7 +1,7 @@
 window.addEventListener("message", (event) => {
     if (
         // accept only from specified origin
-        event.origin !== "http://localhost:3000"
+        event.origin !== "http://localhost:3001"
         // handle interval messages from other sources than the opening window, i.e. react-dev-tools -.-
         || event.source !== window.opener) {
         return;
