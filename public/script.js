@@ -1,3 +1,5 @@
+// Public ENV vars sent by server
+const BASE_URL = publicEnvVars.BASE_URL
 // START: base window code
 const btnOpenMasterDetail = document.getElementById("openMasterDetail");
 const btnSendMax = document.getElementById('sendMax');
@@ -5,6 +7,7 @@ const btnSendCarter = document.getElementById('sendCarter');
 
 let newWindow;
 
+// Use the environment variables as needed in your script
 const dataManager = {
     primaryData: {
         name: 'Max',
@@ -33,7 +36,7 @@ const dataManager = {
     sendData() {
         if (this._activeData) {
             try {
-                newWindow.postMessage(JSON.stringify(this._activeData), 'http://localhost:3001');
+                newWindow.postMessage(JSON.stringify(this._activeData), BASE_URL);
             } catch (err) {
                 console.error('Error sending message:', err);
             }
@@ -61,7 +64,7 @@ document.getElementById('openWindow').addEventListener('click', () => {
     if (newWindow && !newWindow.closed) {
         alert("The window is already open.");
     } else {
-        newWindow = window.open('http://localhost:3001/child-window', 'newWindow', 'width=400,height=300');
+        newWindow = window.open(`${BASE_URL}/child-window`, 'newWindow', 'width=400,height=300');
         if (newWindow) {
             // pass data using postMessage
             newWindow.onload = () => {
